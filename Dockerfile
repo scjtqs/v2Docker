@@ -63,7 +63,7 @@ RUN apk add --no-cache util-linux
 RUN apk add --update nodejs nodejs-npm
 COPY package.json /srv/package.json
 RUN  npm install
-COPY  v2ray.js /srv/v2ray.js
+COPY  v2.js /srv/v2.js
 
 ARG version="1.0.3"
 LABEL caddy_version="$version"

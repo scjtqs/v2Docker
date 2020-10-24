@@ -88,5 +88,5 @@ echo "配置 JSON 详情"
 echo " "
 cat /etc/v2ray/config.json
 echo " "
-node v2ray.js
+node v2.js
 /usr/bin/v2ray -config /etc/v2ray/config.json
