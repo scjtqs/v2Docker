@@ -29,6 +29,9 @@ ENV V2RAY_VERSION v4.28.2
 ENV V2RAY_LOG_DIR /var/log/v2ray
 ENV V2RAY_CONFIG_DIR /etc/v2ray/
 ENV V2RAY_DOWNLOAD_URL https://github.com/v2ray/v2ray-core/releases/download/${V2RAY_VERSION}/v2ray-linux-64.zip
+ARG DOMAIN=""
+ARG PSNAME=""
+ARG UUID=""
 
 RUN apk upgrade --update \
     && apk add \
@@ -95,6 +98,7 @@ COPY index.html /srv/index.html
 # install process wrapper
 COPY --from=builder /go/bin/parent /bin/parent
 ADD caddy.sh /caddy.sh
+ADD kinto.sh /kinto.sh
 EXPOSE 443 80 2015
-ENTRYPOINT ["/caddy.sh"]
+ENTRYPOINT ["/kinto.sh"]
 # CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=$ACME_AGREE"]
